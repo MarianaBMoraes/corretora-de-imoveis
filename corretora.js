@@ -1,7 +1,9 @@
 const prompt = require("prompt-sync")();
 
-let corretora = [
-    {
-        
-    }
-]
+ultimoId = 0;
+let corretora = []
+
+const modelo = (id = ++ultimoId) => {
+    const nome = prompt("Digite o nome da corretora:")
+    const
+}
