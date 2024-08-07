@@ -6,11 +6,15 @@ const db = [];
 
 let proxId = 1;
 
-const modelo = (id = proxId++) => {
-  const nome = prompt("Digite o nome: ");
+const model = (id = proxId++) => {
+  const nome = prompt("Nome: ");
 
-  corretora.index();
-  const id_corretora = parseInt(prompt("ID CORRETORA: "));
+  let id_corretora = 0;
+  if (corretora.index()) {
+    id_corretora = parseInt(prompt("ID da corretora: "));
+  } else {
+    console.log("Cadastre uma corretora para inserir um corretor");
+  }
 
   if (nome != "" && corretora.show(id_corretora)) {
     return {
@@ -20,13 +24,11 @@ const modelo = (id = proxId++) => {
     };
   }
 
-  console.log("Dados inválidos.");
+  console.log("Dados inválidos");
 };
 
 const store = () => {
-  // ou const criar = () => {}
-
-  const novo = modelo();
+  const novo = model();
 
   if (novo) {
     db.push(novo);
@@ -36,49 +38,47 @@ const store = () => {
 };
 
 const index = () => {
-  // ou const listar = () => {}  -- listar os dados
   if (db.length == 0) {
     console.log("Nenhum registro encontrado.");
     return false;
   }
+
   db.forEach((el) => console.log(el));
   return true;
 };
 
-const show = (id) => db.find((el) => el.id == id); // retorna um registro válido ou undefined, mas ela não cria, apenas acha.
+const show = (id) => db.find((el) => el.id == id);
 
 const update = () => {
-  // const atualizar = () => {}
   if (index()) {
-    const id = parseInt(prompt("Id: "));
+    const id = parseInt(prompt("ID: "));
 
     const indice = db.findIndex((el) => el.id == id);
 
     if (indice != -1) {
-      const novo = modelo();
+      const novo = model(id);
 
       if (novo) {
         db[indice] = novo;
-        console.log("Registro atualizado com sucesso!");
+        console.log("Registro atualizado com sucesso.");
       }
     } else {
-      console.log("Registro não encontrado.");
+      console.log("Registro não encontrado");
     }
   }
 };
 
 const destroy = () => {
-  // const remover = () => {}
   if (index()) {
-    const id = parseInt(prompt("Id: "));
+    const id = parseInt(prompt("ID: "));
 
     const indice = db.findIndex((el) => el.id == id);
 
     if (indice != -1) {
       db.splice(indice, 1);
-      console.log("Registro excluído com sucesso.");
+      console.log("Registro excluído com sucesso");
     } else {
-      console.log("Registro não encontrado.");
+      console.log("Registro não encontrado");
     }
   }
 };

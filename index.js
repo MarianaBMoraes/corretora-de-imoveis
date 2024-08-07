@@ -3,10 +3,10 @@ const prompt = require("prompt-sync")();
 const corretora = require("./modulos/corretora.js");
 const cliente = require("./modulos/cliente.js");
 const corretor = require("./modulos/corretor.js");
-
+const imovel = require("./modulos/imovel.js");
+const venda = require("./modulos/venda.js");
 
 console.log(`--- GERENCIAMENTO DE CORRETORA DE IMÓVEIS ---`);
-
 
 const menuPrincipal = () => {
   while (true) {
@@ -15,6 +15,8 @@ const menuPrincipal = () => {
     1 - CORRETORA
     2 - CLIENTE
     3 - CORRETOR
+    4 - IMOVEL
+    5 - VENDA
     0 - SAIR
     `);
 
@@ -24,11 +26,17 @@ const menuPrincipal = () => {
       case 1:
         menuCorretora();
         break;
-        case 2:
+      case 2:
         menuCliente();
         break;
-        case 3:
+      case 3:
         menuCorretor();
+        break;
+      case 4:
+        menuImovel();
+        break;
+      case 5:
+        menuVenda();
         break;
       case 0:
         process.exit();
@@ -76,8 +84,8 @@ const menuCorretora = () => {
   }
 };
 
-const menuCliente = () =>{
-    console.log("GERENCIAMENTO DE CLIENTE");
+const menuCliente = () => {
+  console.log("GERENCIAMENTO DE CLIENTE");
   while (true) {
     console.log(`ESCOLHA O MÓDULO QUE QUER GERENCIAR:
   
@@ -111,10 +119,10 @@ const menuCliente = () =>{
         break;
     }
   }
-}
+};
 
-const menuCorretor = () =>{
-    console.log("GERENCIAMENTO DE CORRETOR");
+const menuCorretor = () => {
+  console.log("GERENCIAMENTO DE CORRETOR");
   while (true) {
     console.log(`ESCOLHA O MÓDULO QUE QUER GERENCIAR:
   
@@ -148,6 +156,80 @@ const menuCorretor = () =>{
         break;
     }
   }
-}
+};
+
+const menuImovel = () => {
+  console.log("GERENCIAMENTO DE IMÓVEIS");
+  while (true) {
+    console.log(`ESCOLHA O MÓDULO QUE QUER GERENCIAR:
+  
+              1 - CADASTRAR 
+              2 - LISTAR
+              3 - ATUALIZAR 
+              4 - EXCLUIR 
+              0 - SAIR
+              `);
+
+    const opcaoServico = parseInt(prompt(": "));
+
+    switch (opcaoServico) {
+      case 1:
+        imovel.store();
+        break;
+      case 2:
+        imovel.index();
+        break;
+      case 3:
+        imovel.update();
+        break;
+      case 4:
+        imovel.destroy();
+        break;
+      case 0:
+        return;
+
+      default:
+        console.log("Opção inválida.");
+        break;
+    }
+  }
+};
+
+const menuVenda = () => {
+  console.log("GERENCIAMENTO DE VENDAS");
+  while (true) {
+    console.log(`ESCOLHA O MÓDULO QUE QUER GERENCIAR:
+  
+              1 - CADASTRAR 
+              2 - LISTAR
+              3 - ATUALIZAR 
+              4 - EXCLUIR 
+              0 - SAIR
+              `);
+
+    const opcaoServico = parseInt(prompt(": "));
+
+    switch (opcaoServico) {
+      case 1:
+        venda.store();
+        break;
+      case 2:
+        venda.index();
+        break;
+      case 3:
+        venda.update();
+        break;
+      case 4:
+        venda.destroy();
+        break;
+      case 0:
+        return;
+
+      default:
+        console.log("Opção inválida.");
+        break;
+    }
+  }
+};
 
 menuPrincipal();
