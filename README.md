@@ -1,6 +1,7 @@
 ### Gerenciamento de Corretora de Imóveis
 
-Este projeto consiste em um sistema de gerenciamento para uma corretora de imóveis, implementado em Node.js. Ele permite o cadastro, listagem, atualização e exclusão de registros relacionados a corretoras, clientes, corretores, imóveis e vendas. Abaixo está a estrutura do projeto e instruções para utilização:
+Este projeto consiste em um sistema de gerenciamento para uma corretora de imóveis, implementado em Node.js. Ele permite o cadastro, listagem, atualização e exclusão de registros relacionados a corretoras, clientes, corretores, imóveis e vendas. 
+Abaixo está a estrutura do projeto e instruções para utilização:
 
 ---
 
